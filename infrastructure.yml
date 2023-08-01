@@ -42,7 +42,7 @@ Resources:
       MapPublicIpOnLaunch: true
       Tags: 
         - Key: Name
-          Value: "Public Subnet AZ1"
+          Value: "Public Subnet Availability Zone 1"
       VpcId: !Ref MyVPC
 
   PrivateSubnet1:
@@ -53,7 +53,7 @@ Resources:
       MapPublicIpOnLaunch: false
       Tags: 
         - Key: Name
-          Value: "Private Subnet AZ1"
+          Value: "Private Subnet Availability Zone 1"
       VpcId: !Ref MyVPC
 
   NAT:
@@ -71,4 +71,21 @@ Resources:
         Tags:
         - Key: Name
           Value: "Elastic IP for our NAT Gateway"
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties: 
+      Tags: 
+        - Key: Name
+          Value: "Public Route Table"
+      VpcId: !Ref MyVPC
+
+  PrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties: 
+      Tags: 
+        - Key: Name
+          Value: "Private Route Table"
+      VpcId: !Ref MyVPC
+  
 
